@@ -1,12 +1,8 @@
-<?php
-session_start();
-?>
-
 <header>
     <a href="/" class="header_logo">Auction</a>
     <div>
         <ul class="header_nav">
-            <?php if ($_SESSION['user']) : ?>
+            <?php if ($_SESSION) : ?>
                 <li><a href="/login.php"><?php echo $_SESSION['user']['full_name']; ?></a></li>
             <?php else : ?>
 
