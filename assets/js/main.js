@@ -100,3 +100,26 @@ $('.register-btn').click(function (e) {
     });
 
 });
+
+$('.payment-btn').click(function (e) {
+    e.preventDefault();
+
+    $(`input`).removeClass('error');
+
+    let get_balance = $('input[name="get_balance"]').val();
+
+    $.ajax({
+        url: 'vendor/payment.php',
+        type: 'POST',
+        dataType: 'json',
+        data: { get_balance: get_balance },
+        success(data) {
+            if (data.status) {
+                document.location.href = '/profile.php';
+            } else {
+                $('.msg').removeClass('none').text(data.message);
+            }
+        }
+    });
+
+});

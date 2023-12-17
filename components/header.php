@@ -1,9 +1,20 @@
+<?php
+session_start();
+require './components/preloader.php'
+?>
+
+
 <header>
     <a href="/" class="header_logo">Auction</a>
     <div>
         <ul class="header_nav">
+
             <?php if ($_SESSION) : ?>
                 <li><a href="/login.php"><?php echo $_SESSION['user']['full_name']; ?></a></li>
+
+            <?php if ($_SESSION['user']) : ?>
+                <li style="display: flex; grid-gap: 20px; align-items: center;"><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""><a href="/login.php"><?php echo $_SESSION['user']['full_name']; ?></a></li>
+
             <?php else : ?>
 
                 <li><a href="/login.php">Войти</a></li>
@@ -41,5 +52,11 @@
     .header_nav li a {
         color: white;
         font-size: 1.5rem;
+    }
+
+    .header_nav img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
     }
 </style>
