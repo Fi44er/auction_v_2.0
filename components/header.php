@@ -10,9 +10,6 @@ require './components/preloader.php'
         <ul class="header_nav">
 
             <?php if ($_SESSION) : ?>
-                <li><a href="/login.php"><?php echo $_SESSION['user']['full_name']; ?></a></li>
-
-            <?php if ($_SESSION['user']) : ?>
                 <li style="display: flex; grid-gap: 20px; align-items: center;"><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""><a href="/login.php"><?php echo $_SESSION['user']['full_name']; ?></a></li>
 
             <?php else : ?>
