@@ -48,6 +48,9 @@ $('input[name="avatar"]').change(function (e) {
     avatar = e.target.files[0];
 });
 
+
+
+
 /*
     Регистрация
  */
@@ -119,6 +122,70 @@ $('.payment-btn').click(function (e) {
             } else {
                 $('.msg').removeClass('none').text(data.message);
             }
+        }
+    });
+
+});
+
+
+/*
+    Получение аватарки с поля
+ */
+
+let lot_img = false;
+
+$('input[name="lot_img"]').change(function (e) {
+    lot_img = e.target.files[0];
+});
+
+
+
+/*
+    Создание лота
+ */
+
+$('.create-lot-btn').click(function (e) {
+    e.preventDefault();
+
+    $(`input`).removeClass('error');
+
+    let lot_name = $('input[name="lot_name"]').val(),
+        current_price = $('input[name="current_price"]').val(),
+        lot_description = $('textarea[name="lot_description"]').val(),
+        lot_date = $('input[name="lot_date"]').val();
+
+    let formData = new FormData();
+    formData.append('lot_name', lot_name);
+    formData.append('lot_img', lot_img);
+    formData.append('current_price', current_price);
+    formData.append('lot_description', lot_description);
+    formData.append('lot_date', lot_date);
+
+
+    $.ajax({
+        url: 'vendor/create_lot.php',
+        type: 'POST',
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        cache: false,
+        data: formData,
+        success(data) {
+
+            if (data.status) {
+                document.location.href = '/profile.php';
+            } else {
+
+                if (data.type === 1) {
+                    data.fields.forEach(function (field) {
+                        $(`input[name="${field}"]`).addClass('error');
+                    });
+                }
+
+                $('.msg').removeClass('none').text(data.message);
+
+            }
+
         }
     });
 

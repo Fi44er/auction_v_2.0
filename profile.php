@@ -40,7 +40,7 @@ if (!$_SESSION) {
                     <button onclick="document.location='vendor/logout.php'" class="logout">Выход</button>
                 </div>
             </div>
-            <div>
+            <div style="display: flex; flex-direction: column; grid-gap: 40px;">
                 <div class="payment-block">
                     <h2>Баланс</h2>
                     <div class="payment-info">
@@ -54,6 +54,11 @@ if (!$_SESSION) {
                             <button class="payment-btn">Пополнить</button>
                         </form>
                     </div>
+                </div>
+
+                <div class="create_lot">
+                    <h2>Создать лот</h2>
+                    <button onclick="document.location='create_lot.php'">Создать</button>
                 </div>
             </div>
         </div>
@@ -83,7 +88,8 @@ if (!$_SESSION) {
         grid-gap: 3rem;
     }
 
-    .main_content_block {
+    .main_content_block,
+    .create_lot {
         min-width: 400px;
         background: white;
         padding: 2rem;
@@ -145,5 +151,11 @@ if (!$_SESSION) {
     .msg {
         max-width: 185px;
         color: red;
+    }
+
+    .create_lot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 </style>

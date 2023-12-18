@@ -1,5 +1,4 @@
 <?php
-session_start();
 require './components/preloader.php'
 ?>
 
