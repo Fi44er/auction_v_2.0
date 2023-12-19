@@ -1,6 +1,6 @@
 <?php
 
-$connect = mysqli_connect('localhost', 'root', '$Fi4er_81', 'test');
+$connect = mysqli_connect('localhost', 'root', '', 'test');
 
 if (!$connect) {
     die('Error connect to DataBase');

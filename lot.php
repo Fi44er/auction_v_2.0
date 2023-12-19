@@ -21,34 +21,28 @@ require('./vendor/get_lots.php');
     <?php require './components/header.php' ?>
 
     <div class="lots">
-        <?php if(count($response) == 0) {?> <h1>На данный момент активных лотов нету</h1> <?php } ?>
-        <?php if(count($response) != 0) { ?>
-        <?php for ($i = 0; $i < count($response); $i++) { ?>
         <div class="lot">
             <div class="lot_img">
-                <img src="<?= $response[$i]['img']?>" alt="">
+                <img src="<?= $response[$_GET['id_lot']]['img']?>" alt="">
             </div>
             <div class="lot_info">
-                <h2 class="lot_info_heading"><?= $response[$i]['name']?></h2>
-                <p class="lot_info_description"><?= $response[$i]['description']?></p>
+                <h2 class="lot_info_heading"><?= $response[$_GET['id_lot']]['name']?></h2>
+                <p class="lot_info_description"><?= $response[$_GET['id_lot']]['description']?></p>
             </div>
             <div class="lot_price">
                 <div class="lot_number">
-                    <p class="lot_number_id"># <?= $response[$i]['id']?></p>
+                    <p class="lot_number_id"># <?= $response[$_GET['id_lot']]['id']?></p>
                 </div>
                 <div class="lot_date">
                     <h4>Дата аукциона</h4>
-                    <p class="lot_date_data"><?= $response[$i]['start_date']?></p>
+                    <p class="lot_date_data"><?= $response[$_GET['id_lot']]['start_date']?></p>
                 </div>
                 <div class="initial_bid">
                     <h4>Ориентировочная ставка</h4>
-                    <p class="initial_bid_price"><?= $response[$i]['initial_bid']?> $</p>
+                    <p class="initial_bid_price"><?= $response[$_GET['id_lot']]['initial_bid']?> $</p>
                 </div>
-                <button onclick="document.location='/lot.php?id_lot=<?= $i?>'">Перейти к лоту</button>
             </div>
         </div>
-        <?php }?>
-        <?php } ?>
     </div>
 
 

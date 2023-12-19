@@ -57,11 +57,19 @@ if (empty($error_fields)) {
     }
 
     mysqli_query($connect, "INSERT INTO `lots` (`id`, `name`, `img`, `initial_bid`, `description`, `start_date`) VALUES (NULL, '$lot_name',  '$path', '$current_price', '$lot_description', '$lot_date')");
+    $lots_id = mysqli_query($connect, "SELECT `id` FROM `lots`")->fetch_all(MYSQLI_ASSOC);
+    $lot_id = $lots_id[count($lots_id) - 1]['id'];
+
+    $owner_id = $_SESSION['user']['id'];
+    mysqli_query($connect, "INSERT INTO `current_lots` (`lot_id`, `id_owner`, `last_buyer_id`, `current_price`) VALUES ($lot_id, '$owner_id', NULL, '$current_price')");
 
     $response = [
         "status" => true,
         "message" => "Создание лота прошло успешно",
     ];
+
+
+
     echo json_encode($response);
 } else {
     $response = [
