@@ -29,8 +29,6 @@ if (!$_SESSION) {
             <input type="file" name="lot_img">
             <label>Начальная ставка</label>
             <input type="text" name="current_price" placeholder="Введите начальную ставку">
-            <label>Дата начала аукциона</label>
-            <input type="text" name="lot_date" placeholder="дд.мм.гггг">
             <label>Описание лота</label>
             <textarea style="margin-bottom: 30px; margin-top: 20px; width: 400px; height: 200px;  resize: none;" name="lot_description" placeholder="Описание"></textarea>
             <button type="submit" class="create-lot-btn">Создать лот</button>

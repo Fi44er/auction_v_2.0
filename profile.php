@@ -44,7 +44,7 @@ if (!$_SESSION) {
                 <div class="payment-block">
                     <h2>Баланс</h2>
                     <div class="payment-info">
-                        <p><?= $_SESSION['user']['balance'] ?> ₽</p>
+                        <p><?= $_SESSION['user']['balance'] ?> $</p>
                         <form class="payment-form">
                             <div>
                                 <p class="msg none"></p>

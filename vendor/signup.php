@@ -82,8 +82,6 @@ if ($password === $password_confirm) {
         "message" => "Регистрация прошла успешно!",
     ];
     echo json_encode($response);
-
-
 } else {
     $response = [
         "status" => false,
@@ -91,5 +89,3 @@ if ($password === $password_confirm) {
     ];
     echo json_encode($response);
 }
-
-?>

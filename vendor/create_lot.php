@@ -5,11 +5,12 @@ require_once 'connect.php';
 
 $lot_name = $_POST['lot_name'];
 $current_price = $_POST['current_price'];
-$lot_date = $_POST['lot_date'];
 $lot_description = (string) $_POST['lot_description'];
 
 
 $error_fields = [];
+
+
 
 if ($lot_name === '') {
     $error_fields[] = 'lot_name';
@@ -23,13 +24,10 @@ if ($current_price === '') {
     $error_fields[] = 'current_price';
 }
 
-if ($lot_date === '') {
-    $error_fields[] = 'lot_date';
-}
-
 if (!$_FILES['lot_img']) {
     $error_fields[] = 'lot_img';
 }
+
 
 if (!empty($error_fields)) {
     $response = [
@@ -56,7 +54,7 @@ if (empty($error_fields)) {
         echo json_encode($response);
     }
 
-    mysqli_query($connect, "INSERT INTO `lots` (`id`, `name`, `img`, `initial_bid`, `description`, `start_date`) VALUES (NULL, '$lot_name',  '$path', '$current_price', '$lot_description', '$lot_date')");
+    mysqli_query($connect, "INSERT INTO `lots` (`id`, `name`, `img`, `initial_bid`, `description`) VALUES (NULL, '$lot_name',  '$path', '$current_price', '$lot_description')");
     $lots_id = mysqli_query($connect, "SELECT `id` FROM `lots`")->fetch_all(MYSQLI_ASSOC);
     $lot_id = $lots_id[count($lots_id) - 1]['id'];
 
